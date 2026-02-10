@@ -137,9 +137,3 @@ class CSVMigrator:
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
-
-
-
-with CSVMigrator("test.db", "example", "id VARCHAR(10), location VARCHAR(30)", log_enabled=True) as migrator:
-    migrator.extend(Path("Project.csv"), ["store_id", "store_location"], ["id", "location"])
-    migrator.extend(Path("Project.csv"), ["store_id", "store_location"], ["id", "location"])

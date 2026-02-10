@@ -19,26 +19,30 @@ print(f"{result['inserted']} rows migrated")
 ---
 
 # ✨ Feuters:
-🔄 Transactions Automatic rollback on errors
-⚡ Batch Processing 16-1000 rows per insert
-📝 Smart Logging Track every migration step
-🎯 Column Mapping Rename CSV → DB columns freely
+
+### 🔄 Transactions Automatic rollback on errors
+### ⚡ Batch Processing 16-1000 rows per insert
+### 📝 Smart Logging Track every migration step
+### 🎯 Column Mapping Rename CSV → DB columns freely
+### 🔘 Poor Python
+
 ---
 
 # 📦 Installation
 
-## Just copy the file
-wget https://raw.githubusercontent.com/you/csv-to-sqlite/main/db_maker.py
+wget https://github.com/Mikelpy/CSV_to_SQL.git
+
 Requirements: Python 3.8+
 
 ---
 
 # 🛡️ Safety
 
-## These will raise ValueError:
+These will raise ValueError:
 migrator = DBMaker("db", "users; DROP TABLE", ...)  # ❌ Invalid name
 migrator.extend(csv, ["id"], ["id", "extra"])        # ❌ Column mismatch
 migrator.extend("missing.csv", ...)                  # ❌ File not found
+
 ---
 
 # 📈 Performance Tips
@@ -48,10 +52,11 @@ migrator.extend(..., batch_size=500)  # ⚡ 500 rows/insert
 
 ## Disable logs for speed
 migrator = DBMaker(..., log_enabled=False)
+
 ---
 
 # 📄 License
 
-omg  — Free to use, modify, share
+## omg  — Free to use, modify, share
 
 ---
