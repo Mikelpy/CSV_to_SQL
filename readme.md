@@ -2,11 +2,16 @@
 
 ---
 
-# 📚 Get Started
+## 📚 Usage
+
+### install CSV files and expand the SQL database using them one by one.
+
+---
+
+## 📚 Get Started
 
 ```
-from db_maker import DBMaker
-migrator = DBMaker("data.db", "users", "id INT, name TEXT")
+migrator = CSVMigrator("data.db", "users", "id INT, name TEXT")
 
 result = migrator.extend(
     csv_path="users.csv",
@@ -18,17 +23,14 @@ print(f"{result['inserted']} rows migrated")
 ```
 ---
 
-# ✨ Feuters:
+## ✨ Feuters:
 
-### 🔄 Transactions Automatic rollback on errors
-### ⚡ Batch Processing 16-1000 rows per insert
-### 📝 Smart Logging Track every migration step
-### 🎯 Column Mapping Rename CSV → DB columns freely
-### 🔘 Poor Python
+###  Transactions Automatic rollback on errors
+###  Batch Processing 16-1000 rows per insert
 
 ---
 
-# 📦 Installation
+## 📦 Installation
 
 wget https://github.com/Mikelpy/CSV_to_SQL.git
 
@@ -36,27 +38,14 @@ Requirements: Python 3.8+
 
 ---
 
-# 🛡️ Safety
+## Enable log
 
-These will raise ValueError:
-migrator = DBMaker("db", "users; DROP TABLE", ...)  # ❌ Invalid name
-migrator.extend(csv, ["id"], ["id", "extra"])        # ❌ Column mismatch
-migrator.extend("missing.csv", ...)                  # ❌ File not found
+    migrator = CSVMigrator(..., log_enabled=False)
 
 ---
 
-# 📈 Performance Tips
+## 📄 License
 
-## Faster for large files
-migrator.extend(..., batch_size=500)  # ⚡ 500 rows/insert
-
-## Disable logs for speed
-migrator = DBMaker(..., log_enabled=False)
-
----
-
-# 📄 License
-
-## omg  — Free to use, modify, share
+###  - Free to use, modify, share
 
 ---

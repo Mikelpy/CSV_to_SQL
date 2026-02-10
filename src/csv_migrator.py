@@ -1,6 +1,3 @@
-__doc__ = """contains 1 class for data migration for .csv to .db
-basic-create: migrator=CSVMigrator(Path(example.db), "uesrs", "name VARCHAR(10), about VARCHAR(50)")"""
-
 import sqlite3
 from pathlib import Path
 import logging
@@ -32,7 +29,6 @@ class CSVMigrator:
         self.cursor = self.conn.cursor()
 
         self.__init_database()
-        self.__try_log(INFO, f"connected to: {self.table_name}, collumns: {self.get_existing_columns()}")
     
     def __init_database(self) -> None:
         query = f"""CREATE TABLE IF NOT EXISTS {self.table_name}
@@ -70,7 +66,6 @@ class CSVMigrator:
             "inserted": 0,
             "null_cells": 0
             }
-        self.__try_log(INFO, f"starting migration from {csv_path.name} to {self.table_name}")
         existing_columns = self.get_existing_columns()
 
         # valiadation
@@ -125,9 +120,7 @@ class CSVMigrator:
         return total
     
     def close(self) -> None:
-        self.__try_log(INFO, f"TOTAL: {self.get_total_info()}")
         self.conn.close()
-        self.__try_log(INFO, f"close connection: {self.table_name}\n")
 
     def __str__(self) -> str:
         return f"DBMaker(table={self.table_name}, columns={self.get_existing_columns()}, path={self.path})"
