@@ -1,0 +1,4 @@
+__pycashe__/*.py
+*.csv
+*.log
+*.db

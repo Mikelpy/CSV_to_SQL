@@ -42,7 +42,7 @@ class CSVMigrator:
     
     def __validate_name(self, name: str) -> None:
         if not re.fullmatch(self.__SAFE_NAME_PAT, name):
-            raise ValueError(f"invalid name {name}")
+            raise ValueError(f"invalid name: {name}")
     
     @contextmanager
     def __transaction(self):
@@ -68,7 +68,7 @@ class CSVMigrator:
             }
         existing_columns = self.get_existing_columns()
 
-        # valiadation
+        # validation
         if len(from_) != len(target):
             raise (ValueError("len 'from_' argument must be = len 'to' argument"))
         if not csv_path.exists():
@@ -103,11 +103,11 @@ class CSVMigrator:
                         self.cursor.executemany(query, batch)
                         stats["inserted"] += len(batch)
                         batch.clear()
-                # last remaing batch
+                # processing residual batch
                 if batch:
                     self.cursor.executemany(query, batch)
                     stats["inserted"] += len(batch)
-        self.__try_log(INFO, f"Migration complited from {csv_path.name} to {self.table_name} >>> {stats}")
+        self.__try_log(INFO, f"Migration completed from {csv_path.name} to {self.table_name} >>> {stats}")
         return stats
     
     def get_total_info(self) -> dict:
@@ -115,7 +115,7 @@ class CSVMigrator:
         total = {
             "MEMORY-USAGE(MB)": os.path.getsize(self.path)//1024,
             "TABLE": self.table_name,
-            "COLLUMNS": self.get_existing_columns(),
+            "COLUMNS": self.get_existing_columns(),
         }
         return total
     

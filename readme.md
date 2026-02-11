@@ -23,7 +23,7 @@ print(f"{result['inserted']} rows migrated")
 ```
 ---
 
-## ✨ Feuters:
+## ✨ Features:
 
 ###  Transactions Automatic rollback on errors
 ###  Batch Processing 16-1000 rows per insert
