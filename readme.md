@@ -1,4 +1,4 @@
-# 📊 CSV to SQLite Migrator
+# 📊 CSV to SQL migration
 
 ---
 
@@ -11,9 +11,9 @@
 ## 📚 Get Started
 
 ```
-migrator = CSVMigrator("data.db", "users", "id INT, name TEXT")
+migrate = CSVMigration("data.db", "users", "id INT, name TEXT")
 
-result = migrator.extend(
+result = migrate.extend(
     csv_path="users.csv",
     from_=["UserID", "FullName"],
     target=["id", "name"],
@@ -32,7 +32,7 @@ print(f"{result['inserted']} rows migrated")
 
 ## 📦 Installation
 
-wget https://github.com/Mikelpy/CSV_to_SQL.git
+wget https://raw.githubusercontent.com/Mikelpy/CSV_to_SQL/main/src/csv_migrator.py
 
 Requirements: Python 3.8+
 

@@ -1,4 +1,4 @@
-__pycashe__/*.py
+.vscode
 *.csv
 *.log
 *.db
